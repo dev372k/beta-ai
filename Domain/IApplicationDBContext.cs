@@ -1,10 +1,8 @@
-﻿using MongoDB.Driver;
-using Domain.Documents;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Domain;
 
 public interface IApplicationDBContext
 {
-    IMongoCollection<User> Users { get; }
-    IMongoCollection<Feedback> Feedbacks { get; }
+    DbSet<TEntity> Set<TEntity>() where TEntity : class;
 }
