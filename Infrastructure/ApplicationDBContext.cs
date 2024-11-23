@@ -8,4 +8,5 @@ public class ApplicationDBContext : DbContext, IApplicationDBContext
 {
     public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options) { }
     public DbSet<User> Users => Set<User>();
+    public DbSet<Consumption> Consumptions => Set<Consumption>();
 }

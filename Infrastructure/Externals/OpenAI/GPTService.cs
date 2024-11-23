@@ -23,7 +23,7 @@ public class GPTService : IGPTService
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _config["OpenAIKey"]);
     }
 
-    public async Task<GetLanguageDto> GetLanguage(string text)
+    public async Task<object> GetLanguage(string text)
     {
         var request = new OpenAIRequestDto
         {
@@ -35,7 +35,7 @@ public class GPTService : IGPTService
                         Content = @"Extract the language and dialect both in json
                         {
                             ""language""
-                        } for e language(dialect) example italian(Sicilian) etc"
+                        } for example language(dialect) example italian(Sicilian) etc"
                     },
                     new OpenAIMessageRequestDto
                     {
@@ -60,13 +60,13 @@ public class GPTService : IGPTService
 
         var responseModel = JsonSerializer.Deserialize<OpenAICustomLanguageDetectorDto>(SanitizeHelper.SanitizeJsonString(data.choices[0].message.content));
 
-        return new GetLanguageDto
-        (
+        return new
+        {
             responseModel!.language
-        );
+        };
     }
 
-    public async Task<GetSentimentDto> GetSentiment(string review)
+    public async Task<object> GetSentiment(string review)
     {
         var request = new OpenAIRequestDto
         {
@@ -105,14 +105,14 @@ public class GPTService : IGPTService
 
         var responseModel = JsonSerializer.Deserialize<OpenAICustomInsightDto>(SanitizeHelper.SanitizeJsonString(data.choices[0].message.content));
 
-        return new GetSentimentDto
-        (
+        return new
+        {
             responseModel!.sentiment,
             responseModel.insight
-        );
+        };
     }
     
-    public async Task<GetSummaryDto> GetSummary(string text)
+    public async Task<object> GetSummary(string text)
     {
         var request = new OpenAIRequestDto
         {
@@ -149,13 +149,13 @@ public class GPTService : IGPTService
 
         var responseModel = JsonSerializer.Deserialize<OpenAICustomSummarizerDto>(SanitizeHelper.SanitizeJsonString(data.choices[0].message.content));
 
-        return new GetSummaryDto
-        (
+        return new
+        {
             responseModel!.summary
-        );
+        };
     }
 
-    public async Task<GetTranslationDto> GetTranslation(string text)
+    public async Task<object> GetTranslation(string text)
     {
         var request = new OpenAIRequestDto
         {
@@ -192,9 +192,9 @@ public class GPTService : IGPTService
 
         var responseModel = JsonSerializer.Deserialize<OpenAICustomLanguageTranslatorDto>(SanitizeHelper.SanitizeJsonString(data.choices[0].message.content));
 
-        return new GetTranslationDto
-        (
+        return new
+        {
             responseModel!.translation
-        );
+        };
     }
 }

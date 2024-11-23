@@ -7,4 +7,5 @@ public class ExceptionMessages
     public const string CANNOT_DELETE = "Cannot delete the record because record are associated with it.";
     public const string PAGINATION_ERROR = "PageSize and PageNo must be greater than 0.";
     public const string INVALID_API_KEY = "Invalid API key provided";
+    public const string UNKNOWN_SERVICE = "Please provided the valid service.";
 }

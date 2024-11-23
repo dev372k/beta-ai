@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Apps\DTOs\Requests\" />
     <Folder Include="Apps\DTOs\Responses\" />
     <Folder Include="Users\DTOs\Responses\" />
     <Folder Include="Users\DTOs\Requests\" />

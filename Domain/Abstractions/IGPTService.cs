@@ -4,8 +4,8 @@ namespace Domain.Abstractions;
 
 public interface IGPTService
 {
-    Task<GetSentimentDto> GetSentiment(string review);
-    Task<GetSummaryDto> GetSummary(string text);
-    Task<GetTranslationDto> GetTranslation(string text);
-    Task<GetLanguageDto> GetLanguage(string text);
+    Task<object> GetSentiment(string review);
+    Task<object> GetSummary(string text);
+    Task<object> GetTranslation(string text);
+    Task<object> GetLanguage(string text);
 }
